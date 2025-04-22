@@ -13,7 +13,7 @@ function iniciarJogo (modo) {
  
 
 // Função que gera nova pergunta e mostra na tela
-function novaPergunta ()
+function novaPergunta()
       const numeros = gerarNumeros (modoAtual);
       const operacao = escolherOpe
       const perguntaTexto = '${numeros.num1} ${operacao} $ {numeros.num2}';
@@ -24,7 +24,6 @@ function novaPergunta ()
 
     document.getElementById ("pergunta") .innerText = perguntaTexto;
     document.getElementById ("resposta") .value = "";
-
 }
 
 
@@ -39,11 +38,31 @@ function gerarNumeros (modo) {
 }
 
    return { num1, num2 };
-}
+
+   }
 
 // Escolher aleatoriamente uma operacao: +, - ou *
 function escolheroperacao() {
   const operacoes = ['+', '-', '*'];
   return operacoes[math.floor(math.random() * operacoes.length)];
 }
-//Calcular o resultado
+//Calcular o resultado com base nos numeros e operacoes
+function calcularResposta(n1, n2, op) {
+  switch (op) {
+    case '+': return n1 + n2;
+    case '-': return n1 - n2;
+    case '*': return n1 * n2;
+  }
+}
+//Verificar se a resposta do usuario esta correta
+function verificarResposta() {
+  const respostaUsuario = perseInt(document.getElementById("resposta").value);
+  if (respostaUsuario === respostaCorreta) {
+    document.getElementById("resultado").innerText = " Resposta Correta!";
+    pontuacao += 10;
+  } else {
+    document.getElementById("resultado").innerText = ' Errado! A resposta era ${respostacorreta}';
+    pontuacao -= 5;
+  }
+  document.getElementById(pontuacao).innerText = pontuacao;
+}
