@@ -35,7 +35,7 @@ function gerarNumeros (modo) {
   if(modo === 'desafio') }
    num *= 2;
    num *= 3;
-}
+  }
 
    return { num1, num2 };
 
@@ -45,7 +45,7 @@ function gerarNumeros (modo) {
 function escolheroperacao() {
   const operacoes = ['+', '-', '*'];
   return operacoes[math.floor(math.random() * operacoes.length)];
-}
+ }
 //Calcular o resultado com base nos numeros e operacoes
 function calcularResposta(n1, n2, op) {
   switch (op) {
